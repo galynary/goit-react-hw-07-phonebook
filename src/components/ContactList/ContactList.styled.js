@@ -2,15 +2,28 @@ import styled from 'styled-components';
 import { theme } from '../../styles/theme';
 
 export const List = styled.ul`
-  padding: 16px;
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
-  background-color: ${theme.colors.light};
-  list-style: none;
-  box-shadow: ${theme.shadows.small};
+  display: flex;
+  flex-direction: column;
+  gap: ${theme.gap[3]};
+  padding: ${theme.padding[2]}px;
+  background-color: ${theme.colors.white};
 `;
+
 export const Item = styled.li`
-  :not(:first-child) {
-    margin-top: 28px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+  gap: ${theme.gap[3]};
+`;
+
+export const DeleteButton = styled.button`
+  background-color: ${theme.colors.green};
+  padding: 10px 20px;
+  color: ${theme.colors.white};
+  border-radius: 10px;
+  transition: transform 300ms ease-in-out;
+  &:hover {
+    transform: scale(1.05);
   }
 `;

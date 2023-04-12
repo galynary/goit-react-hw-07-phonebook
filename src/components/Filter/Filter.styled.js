@@ -1,27 +1,24 @@
 import styled from 'styled-components';
 import { theme } from '../../styles/theme';
 
-export const FilterContainer = styled.div`
-  padding: 20px;
-  background-color: ${theme.colors.dark};
-  color: ${theme.colors.light};
-  box-shadow: ${theme.shadows.small};
-  border-top-right-radius: 16px;
-  border-top-left-radius: 16px;
-  transition: box-shadow ${theme.animation.cubicBezier};
-  :hover {
-    box-shadow: ${theme.shadows.medium};
-  }
+export const FilterWrapper = styled.div`
+  display: flex;
+  padding: ${theme.padding[2]}px;
+  align-items: center;
+  justify-content: center;
+  background-color: ${theme.colors.white};
 `;
 
-export const FilterInput = styled.input`
-  margin: auto;
-  border: none;
-  font-size: ${theme.fontSizes.medium};
-  background-color: ${theme.colors.yellow};
-  color: ${theme.colors.dark};
-  :hover,
-  :focus {
-    outline: none;
-  }
+export const Label = styled.label`
+  width: 100%;
+`;
+
+export const Input = styled.input`
+  border: 1px solid ${theme.colors.green};
+  padding: ${theme.padding[2]}px;
+  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
 `;

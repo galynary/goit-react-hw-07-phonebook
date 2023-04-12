@@ -9,5 +9,5 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(24, 22, 21, 0.6);
+  background-color: rgba(24, 22, 21, 0.9);
 `;

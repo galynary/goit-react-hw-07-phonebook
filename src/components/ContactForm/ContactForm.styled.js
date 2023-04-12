@@ -4,42 +4,35 @@ import { theme } from '../../styles/theme';
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 20px;
-  background-color: ${theme.colors.light};
-  box-shadow: ${theme.shadows.small};
-  border-radius: 4px;
-  transition: box-shadow ${theme.animation.cubicBezier};
-  :hover {
-    box-shadow: ${theme.shadows.medium};
-  }
+  justify-content: center;
+  align-items: center;
+  gap: ${theme.gap[3]}px;
+  top: 50%;
+  left: 50%;
+  padding: ${theme.padding[2]}px;
+  margin-bottom: 50px;
+  border-radius: 10px;
 `;
 
-export const FormInput = styled.input`
+export const Label = styled.label`
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  border: none;
-  font-size: ${theme.fontSizes.medium};
-  background-color: ${theme.colors.background};
-  color: ${theme.colors.dark};
-  :hover,
-  :focus {
-    outline: none;
-  }
+  gap: ${theme.gap[1]}px;
 `;
 
-export const FormButton = styled.button`
-  padding: 8px;
-  font-size: 16px;
-  margin: auto;
-  display: block;
-  width: 50%;
-  border: 2px solid ${theme.colors.light};
-  transition: background-color ${theme.animation.cubicBezier},
-    color ${theme.animation.cubicBezier};
-  :hover {
-    background-color: ${theme.colors.light};
-    color: ${theme.colors.dark};
-    border: 2px solid ${theme.colors.dark};
-    box-shadow: ${theme.shadows.regular};
-  }
+export const Input = styled.input`
+  border: 1px solid ${theme.colors.green};
+  padding: ${theme.padding[2]}px;
+  border-radius: 10px;
+`;
+export const Button = styled.button`
+  width: 100%;
+  background-color: ${theme.colors.green};
+  padding: ${theme.padding[2]}px;
+  border-radius: 10px;
+  color: ${theme.colors.white};
+  text-transform: uppercase;
+  font-size: ${theme.typography.medium};
+  border: none;
 `;

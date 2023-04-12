@@ -1,32 +1,56 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { getContacts, getFilter } from 'redux/selectors';
-import { ContactEl } from 'components/ContactEl';
-import { List, Item } from './ContactList.styled';
-import { removeContact } from 'redux/contactsSlice';
+import { List, Item, DeleteButton } from './ContactList.styled';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { deleteContact, fetchContacts } from 'redux/contact/operations';
+import {
+  selectContacts,
+  selectError,
+  selectFilter,
+  selectIsLoading,
+} from 'redux/selectors';
+import {
+  notificationNoContact,
+  notificationError,
+} from 'components/Notifacation/Notifacation';
+import { Loader } from 'components/Loader/Loader';
 
 export const ContactList = () => {
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
   const dispatch = useDispatch();
+  const filter = useSelector(selectFilter);
+  const contacts = useSelector(selectContacts);
+  const onError = useSelector(selectError);
+  const isLoading = useSelector(selectIsLoading);
 
-  const visibleContacts = () => {
-    const normolizeFilter = filter.toLowerCase();
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normolizeFilter)
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
+  const filteredContacts = () => {
+    const normalizedFilter = filter.toLowerCase();
+    const filtered = contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
     );
+    if (filtered.length === 0 && filter) {
+      notificationNoContact();
+    }
+    return filtered;
   };
 
-  const visibleContactsOnPage = visibleContacts();
+  const contactsToDisplay = filteredContacts();
 
   return (
     <List>
-      {visibleContactsOnPage.map(({ id, name, number }) => (
+      {isLoading && <Loader />}
+      {onError && notificationError()}
+      {contactsToDisplay.map(({ id, name, phone }) => (
         <Item key={id}>
-          <ContactEl
-            name={name}
-            number={number}
-            onDelete={() => dispatch(removeContact(id))}
-          />
+          {name}: {phone}
+          <DeleteButton
+            type="button"
+            onClick={() => dispatch(deleteContact(id))}
+          >
+            Delete
+          </DeleteButton>
         </Item>
       ))}
     </List>
