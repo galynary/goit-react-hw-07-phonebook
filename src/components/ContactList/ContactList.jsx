@@ -1,7 +1,7 @@
 import { List, Item, DeleteButton } from './ContactList.styled';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { deleteContact, fetchContacts } from 'redux/contact/operations';
+import { deleteContact, fetchContacts } from 'redux/operations';
 import {
   selectContacts,
   selectError,
