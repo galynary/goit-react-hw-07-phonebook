@@ -8,6 +8,7 @@ import { selectIsLoading } from 'redux/contact/selectors';
 
 export const PhoneBook = () => {
   const isLoading = useSelector(selectIsLoading);
+
   return (
     <Wrapper>
       {isLoading && <Loader />}

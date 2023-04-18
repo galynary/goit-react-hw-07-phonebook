@@ -8,6 +8,7 @@ import {
   notificationSameName,
   notificationSameNumber,
 } from 'components/Notifacation/Notifacation';
+
 export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
