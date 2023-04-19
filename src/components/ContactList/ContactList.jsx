@@ -8,11 +8,6 @@ import {
   selectFilter,
   selectIsLoading,
 } from 'redux/contact/selectors';
-import {
-  notificationNoContact,
-  notificationError,
-} from 'components/Notifacation/Notifacation';
-import { Loader } from 'components/Loader/Loader';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
@@ -31,7 +26,6 @@ export const ContactList = () => {
       contact.name.toLowerCase().includes(normalizedFilter)
     );
     if (filtered.length === 0 && filter) {
-      notificationNoContact();
     }
     return filtered;
   };
@@ -40,8 +34,8 @@ export const ContactList = () => {
 
   return (
     <List>
-      {isLoading && <Loader />}
-      {onError && notificationError()}
+      {isLoading}
+      {onError}
       {contactsToDisplay.map(({ id, name, phone }) => (
         <Item key={id}>
           {name}: {phone}
