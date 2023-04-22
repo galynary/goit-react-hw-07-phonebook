@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
 import { nanoid } from 'nanoid';
-import { toast } from 'react-hot-toast';
-
-import { Form, FormInput, FormButton } from './ContactForm.styled';
+import { Form, Label, Input, Button } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/operations';
-import { selectContacts } from 'redux/selectors';
+import { addContact } from 'redux/contact/operations';
+import { selectContacts } from 'redux/contact/selectors';
+import {
+  notificationSameName,
+  notificationSameNumber,
+} from 'components/Notifacation/Notifacation';
 
 export const ContactForm = () => {
-  const contacts = useSelector(selectContacts);
-  const dispatch = useDispatch();
-
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const nameId = nanoid();
-  const numberId = nanoid();
+  const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
 
   const handleChange = e => {
-    const { name, value } = e.currentTarget;
+    const { name, value } = e.target;
+
     switch (name) {
       case 'name':
         setName(value);
@@ -27,51 +27,60 @@ export const ContactForm = () => {
         setNumber(value);
         break;
       default:
-        break;
+        return;
     }
   };
 
-  const isContactRecorded = contacts.find(contact => contact.name === name);
-
-  const handleSubmit = e => {
+  const handleSubmitForm = e => {
     e.preventDefault();
-    isContactRecorded
-      ? alert(`${name} is alreadi in contacts`)
-      : dispatch(addContact({ id: nanoid(), name, number }));
-    toast.success('new contact added');
+    if (
+      contacts.find(
+        contact => contact.name.toLowerCase() === name.toLowerCase()
+      )
+    ) {
+      notificationSameName(name);
+      return;
+    } else if (contacts.find(contact => contact.number === number)) {
+      notificationSameNumber(number);
+      return;
+    } else {
+      dispatch(addContact({ name, phone: number, id: nanoid() }));
+      resetForm();
+    }
+  };
+
+  const resetForm = () => {
     setName('');
     setNumber('');
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <label htmlFor={nameId}>
+    <Form onSubmit={handleSubmitForm}>
+      <Label>
         Name
-        <FormInput
-          id={nameId}
+        <Input
+          value={name}
+          onChange={handleChange}
           type="text"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
-          value={name}
-          onChange={handleChange}
         />
-      </label>
-      <label htmlFor={numberId}>
-        Numbe
-        <FormInput
-          id={numberId}
+      </Label>
+      <Label htmlFor="">
+        Number
+        <Input
+          value={number}
+          onChange={handleChange}
           type="tel"
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
-          value={number}
-          onChange={handleChange}
         />
-      </label>
-      <FormButton type="submit">Add contact</FormButton>
+      </Label>
+      <Button type="submit">Add contact</Button>
     </Form>
   );
 };

@@ -21,12 +21,12 @@ export const Label = styled.label`
   gap: ${theme.gap[1]}px;
 `;
 
-export const FormInput = styled.input`
+export const Input = styled.input`
   border: 1px solid ${theme.colors.green};
   padding: ${theme.padding[2]}px;
   border-radius: 10px;
 `;
-export const FormButton = styled.button`
+export const Button = styled.button`
   width: 100%;
   background-color: ${theme.colors.green};
   padding: ${theme.padding[2]}px;

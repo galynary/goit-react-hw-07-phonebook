@@ -1,31 +1,27 @@
-import React, { useState } from 'react';
-import { nanoid } from 'nanoid';
-import { FilterInput, FilterContainer } from './Filter.styled';
-import { useDispatch } from 'react-redux';
-import { filterContacts } from 'redux/contactsSlice';
+import React from 'react';
+import { FilterWrapper, Label, Input } from './Filter.styled';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectFilter } from 'redux/contact/selectors';
+import { setFilterValue } from 'redux/contact/filterSlice';
 
-export const FilterContacts = () => {
-  const filterId = nanoid();
+export function Filter() {
   const dispatch = useDispatch();
+  const filterValue = useSelector(selectFilter);
 
-  const [FilterValue, setFilterValue] = useState('');
-  const changeFilter = e => {
-    setFilterValue(e.currentTarget.value);
-    dispatch(filterContacts(e.currentTarget.value.toLowerCase()));
+  const onChange = e => {
+    dispatch(setFilterValue(e.currentTarget.value));
   };
-
   return (
-    <FilterContainer>
-      <label htmlFor={filterId}>
-        Find contacts by name
-        <FilterInput
-          id={filterId}
+    <FilterWrapper>
+      <Label>
+        Find name
+        <Input
           type="text"
-          name="filter"
-          value={FilterValue}
-          onChange={changeFilter}
+          value={filterValue}
+          onChange={onChange}
+          placeholder=" "
         />
-      </label>
-    </FilterContainer>
+      </Label>
+    </FilterWrapper>
   );
-};
+}
