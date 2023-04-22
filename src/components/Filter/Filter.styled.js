@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { theme } from '../../styles/theme';
 
-export const FilterWrapper = styled.div`
+export const FilterContainer = styled.div`
   display: flex;
   padding: ${theme.padding[2]}px;
   align-items: center;
@@ -9,11 +9,7 @@ export const FilterWrapper = styled.div`
   background-color: ${theme.colors.white};
 `;
 
-export const Label = styled.label`
-  width: 100%;
-`;
-
-export const Input = styled.input`
+export const FilterInput = styled.input`
   border: 1px solid ${theme.colors.green};
   padding: ${theme.padding[2]}px;
   width: 100%;
