@@ -15,11 +15,11 @@ export const Wrapper = styled.div`
 export const Title = styled.h1`
   font-size: ${theme.typography.title};
   text-align: center;
-  margin-bottom: ${theme.marginbottom[2]};
+  margin-bottom: 20px;
 `;
 
 export const ContactTitle = styled.h2`
   font-size: ${theme.typography.title};
   text-align: center;
-  margin-bottom: ${theme.marginbottom[2]};
+  margin-bottom: 20px;
 `;

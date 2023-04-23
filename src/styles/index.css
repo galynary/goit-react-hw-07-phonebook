@@ -6,10 +6,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.2;
-  color: #060d2d;
-  font-size: 24px;
-  background-color: #c9d6ff;
 }
 
 code {
@@ -31,16 +27,4 @@ ul,
 ol {
   margin: 0;
   padding: 0;
-}
-
-button {
-  background-color: #0a249b;
-  border: none;
-  color: #ffffff;
-  padding: 8px 16px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 4px;
 }

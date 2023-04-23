@@ -9,6 +9,7 @@ export const Form = styled.form`
   gap: ${theme.gap[3]}px;
   top: 50%;
   left: 50%;
+  background-color:${theme.colors.white}
   padding: ${theme.padding[2]}px;
   margin-bottom: 50px;
   border-radius: 10px;
@@ -22,14 +23,14 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
-  border: 1px solid ${theme.colors.green};
+  border: 1px solid ${theme.colors.second};
   padding: ${theme.padding[2]}px;
   border-radius: 10px;
 `;
 export const Button = styled.button`
   width: 100%;
   background-color: ${theme.colors.green};
-  padding: ${theme.padding[2]}px;
+  padding: ${theme.padding[3]}px;
   border-radius: 10px;
   color: ${theme.colors.white};
   text-transform: uppercase;

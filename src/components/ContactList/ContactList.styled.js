@@ -6,6 +6,7 @@ export const List = styled.ul`
   flex-direction: column;
   gap: ${theme.gap[3]};
   padding: ${theme.padding[2]}px;
+  font-size: ${theme.typography.text};
   background-color: ${theme.colors.white};
 `;
 
@@ -15,6 +16,7 @@ export const Item = styled.li`
   justify-content: space-between;
   width: 100%;
   gap: ${theme.gap[3]};
+  font-size: ${theme.typography.text};
 `;
 
 export const DeleteButton = styled.button`

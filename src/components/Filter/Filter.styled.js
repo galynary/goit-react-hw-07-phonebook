@@ -14,11 +14,11 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
-  border: 1px solid ${theme.colors.green};
-  padding: ${theme.padding[2]}px;
+  border: 1px solid ${theme.colors.second};
+  padding: 15px 0px;
   width: 100%;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 10px;
+  border-radius: 6px;
 `;

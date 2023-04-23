@@ -1,17 +1,17 @@
-import { BallTriangle } from 'react-loader-spinner';
+import { ThreeDots } from 'react-loader-spinner';
 import { Wrapper } from './Loader.styled';
 
 export function Loader() {
   return (
     <Wrapper>
-      <BallTriangle
-        height={100}
-        width={100}
-        radius={5}
-        color="#2cc929"
-        ariaLabel="ball-triangle-loading"
-        wrapperClass={{}}
-        wrapperStyle=""
+      <ThreeDots
+        height="60"
+        width="60"
+        radius="9"
+        color="e7e9e796"
+        ariaLabel="three-dots-loading"
+        wrapperStyle={{}}
+        wrapperClassName=""
         visible={true}
       />
     </Wrapper>
